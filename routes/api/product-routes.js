@@ -82,7 +82,7 @@ router.put('/:id', (req, res) => {
   })
     .then((product) => {
       // find all associated tags from ProductTag
-      return ProductTag.findAll({ where: { product_id: req.params.id } });
+      return ProductTag.findAll({ where: { product_id: req.params.id }});
     })
     .then((productTags) => {
       // get list of current tag_ids
@@ -116,12 +116,12 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   // delete one product by its `id` value
-  Products.destroy({
+  Product.destroy({
     where: {
       id: req.params.id
     }
   })
-  .then((products) => res.status(200).json(products))
+  .then((product) => res.status(200).json(product))
   .catch((err) => res.status(400).json(err))
 });
 
